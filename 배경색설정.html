@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link  rel="stylesheet" href="배경색설정.css"/>
+    <title>Document</title>
+</head>
+<body>
+    <div class="MainBox">
+            <h1 class="TextCenter">배경색 설정</h1>
+            <p>배경색 설정</p>
+            <input id="color" type="color">
+            <button onclick="handleChange()">변경</button>
+            </br>
+            <p>하단바 색 설정</p>
+            <input id="btcolor" type="color">
+            <button onclick="handlebtChange()">변경</button>
+        <script>
+            function handleChange(){
+                const color = document.getElementById("color");
+                console.log(color.value);
+                localStorage.setItem("color", color.value);
+                const main = document.getElementsByClassName("MainBox");
+                main[0].style.backgroundColor = `${color.value}`;
+            }
+        </script> 
+        <div class="Bottom">
+            <a href="Location.html"><image src="목적지아이콘.png" class="locationIcon" style="width:50px; height:50px"></a>
+            <a href="Record.html"><image src="기록아이콘.png" class="recordIcon" style="width:50px; height:50px"></a>
+            <a href="팀프 설정창(main).html"><image src="설정아이콘.png" class="personalIcon" style="width:50px; height:50px"></a>
+            <div class="BottomName">
+                <p class="ba">알림설정</p>
+                <p class="bb">기록</p>
+                <p class="bc">사용자설정</p>
+            </div>    
+        </div>
+        <script>
+            function handlebtChange(){
+                const btcolor = document.getElementById("btcolor");
+                localStorage.setItem("btcolor",btcolor.value);
+                const Bottom = document.getElementsByClassName("Bottom");
+                Bottom[0].style.backgroundColor = `${btcolor.value}`;
+            }
+        </script>
+    </div>
+</body>
+</html>

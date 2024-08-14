@@ -1,0 +1,148 @@
+
+  .box{
+   display: block;
+   unicode-bidi: isolate;
+   margin-block-start: 0.5em;
+   margin-block-end: 0.5em;
+   margin-inline-start: auto;
+   margin-inline-end: auto;
+   overflow: hidden;
+   border-style: inset;
+   border-width: 2px;
+   padding: 1px;
+   background-color: rgb(234, 231, 231);
+   margin-left: auto;
+   margin-right: auto;
+   border-radius: 15px 15px 15px 15px;
+  }
+  
+   ul{
+     padding: 0;
+      
+     line-height: 50px;
+   }
+
+   header#header { 
+     pointer-events: none;
+     line-height: 2px;
+     padding: 40px 50px;
+     text-align: center;
+   }
+   a { 
+     text-decoration: none; 
+     color: black;
+   }
+   
+  li{
+   list-style: none;
+   font-size: large;
+   font-style: normal;
+   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }
+
+.wrapper {
+width: auto;
+height: auto;
+text-align: right;
+margin: 0px auto;
+transform: translate(0%, -120%);
+}
+
+#switch {
+ appearance: none;
+ -webkit-appearance: none;
+ -moz-appearance: none;
+}
+
+.switch_label {
+ position: relative;
+ cursor: pointer;
+ display: inline-block;
+ width: 58px;
+ height: 28px;
+ background: #fff;
+ border: 2px solid rgb(0, 0, 0);
+ border-radius: 20px;
+ transition: 0.2s;
+}
+.switch_label:hover {
+ background: #efefef;
+}
+.onf_btn {
+ position: absolute;
+ top: 4px;
+ left: 3px;
+ display: inline-block;
+ width: 20px;
+ height: 20px;
+ border-radius: 20px;
+ background: rgb(0, 0, 0);
+ transition: 0.2s;
+}
+
+/* checking style */
+#switch:checked+.switch_label {
+ background: white;
+ border: 2px solid black;
+}
+
+#switch:checked+.switch_label:hover {
+ background: gainsboro;
+}
+
+/* move */
+#switch:checked+.switch_label .onf_btn {
+ left: 34px;
+ background: rgb(0, 0, 0);
+ box-shadow: 1px 2px 3px #91909020;
+}
+
+.MainFrame {
+  border: 1px solid rgb(214, 200, 200);
+  width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: rgb(209, 219, 231);
+}
+
+.Bottom { 
+  padding-top: 15px;
+  padding-bottom: -20px;
+  background-color:rgb(128, 148, 223);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-top: 680px;
+}
+
+.locationIcon{
+  padding: 0 50px;
+}
+
+.recordIcon {
+  padding: 0 120px;
+}
+
+.personalIcon{
+  padding: 0 48px;
+}
+
+.BottomName {
+  display: inline-flex;   
+}
+
+.ba {
+  margin-top: -10px;
+  padding: 0 45px;
+}
+
+.bb {
+  margin-top: -10px;
+  padding: 0 125px;
+}
+
+.bc {
+  margin-top: -10px;
+  padding: 0 50px;
+}

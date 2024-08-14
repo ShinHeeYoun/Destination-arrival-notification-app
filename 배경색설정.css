@@ -1,0 +1,54 @@
+
+.MainBox {
+  border: 1px solid rgb(214, 200, 200);
+  width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: rgb(209, 219, 231);
+}
+
+.Bottom { 
+  padding-top: 15px;
+  padding-bottom: -20px;
+  background-color:rgb(128, 148, 223);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-top: 910px;
+}
+
+.locationIcon{
+  padding: 0 50px;
+}
+
+.recordIcon {
+  padding: 0 120px;
+}
+
+.personalIcon{
+  padding: 0 48px;
+}
+
+.BottomName {
+  display: inline-flex;   
+}
+
+.ba {
+  margin-top: -10px;
+  padding: 0 45px;
+}
+
+.bb {
+  margin-top: -10px;
+  padding: 0 125px;
+}
+
+.bc {
+  margin-top: -10px;
+  padding: 0 50px;
+}
+
+.TextCenter { 
+  text-align: center;
+}

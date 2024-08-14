@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    
+    .box{
+      display: block;
+      unicode-bidi: isolate;
+      margin-block-start: 0.5em;
+      margin-block-end: 0.5em;
+      margin-inline-start: auto;
+      margin-inline-end: auto;
+      overflow: hidden;
+      border-style: inset;
+      padding: 1px;
+      background-color: rgb(234, 231, 231);
+     }
+     
+    header{
+      text-align: center;
+    }
+    
+    a{
+      text-decoration: none;
+      color: black;
+    }
+
+    .Bottom { 
+    padding-top: 15px;
+    padding-bottom: -20px;
+    background-color:rgb(128, 148, 223);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-top: 539px;
+    }
+
+    .locationIcon{
+        padding: 0 50px;
+    }
+
+    .recordIcon {
+        padding: 0 120px;
+    }
+
+    .personalIcon{
+        padding: 0 48px;
+    }
+
+    .ba {
+    margin-top: -10px;
+    padding: 0 45px;
+    }
+
+    .bb {
+        margin-top: -10px;
+        padding: 0 125px;
+    }
+
+    .bc {
+        margin-top: -10px;
+        padding: 0 50px;
+    }
+    .BottomName {
+    display: inline-flex;   
+}
+
+    .MainFrame{
+      border: 1px solid rgb(214, 200, 200);
+      width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+      background-color: rgb(209, 219, 231);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="MainFrame">
+    <header>
+      <h1>도움말</h1>
+    </header>
+    <nav>
+      <div>
+          <li class = "box">
+            <span>언어 설정은 어떤 기능인가요?</span>
+            <ul>
+              <li><a href="#">언어 설정 기능은 한국어를 모르는 외국인들을 위해 영어, 중국어를 제공하고 있습니다.</a></li>
+            </ul>
+          </li>
+          <li class = "box">
+            <span>자동 알람은 어떤 기능인가요?</span>
+            <ul>
+              <li><a href="#">자동 알람은 목적지에 도착할 때 사용자에게 자동으로 알람을 켜서 알려주는 기능입니다. 스위치를 통해 on/off로 제어할 수 있습니다.</a></li>
+            </ul>
+          </li>
+          <li class = "box">
+            <span>사용기록 전체 삭제는 어떤 기능인가요?</span>
+            <ul>
+              <li><a href="#">사용기록 전체삭제는 사용자의 지도 캐시, 검색 히스토리, 길찾기 히스토리등 사용자의 모든 기록을 삭제하고 저장공간을 확보해줍니다.</a></li>
+            </ul>
+          </li>
+          <div class="Bottom">
+            <a href="Location.html"><image src="목적지아이콘.png" class="locationIcon" style="width:50px; height:50px"></a>
+            <a href="Record.html"><image src="기록아이콘.png" class="recordIcon" style="width:50px; height:50px"></a>
+            <a href="팀프 설정창(main).html"><image src="설정아이콘.png" class="personalIcon" style="width:50px; height:50px"></a>
+                <div class="BottomName">
+                    <p class="ba">알림설정</p>
+                    <p class="bb">기록</p>
+                    <p class="bc">사용자설정</p>
+                </div> 
+        </div>
+      </div>
+</body>
+</html>

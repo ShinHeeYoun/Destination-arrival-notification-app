@@ -1,0 +1,99 @@
+.MainFrame {
+    border: 1px solid rgb(214, 200, 200);
+    width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: rgb(209, 219, 231);
+    
+  }
+
+  .distance { 
+    width:260px;
+    height:20px;
+    font-size:20px;
+}
+
+
+.BottomName {
+    display: inline-flex;   
+}
+
+.ba {
+    margin-top: -10px;
+    padding: 0 45px;
+}
+
+.bb {
+    margin-top: -10px;
+    padding: 0 125px;
+}
+
+.bc {
+    margin-top: -10px;
+    padding: 0 48px;
+}
+
+image {
+    width: 10;
+    height: 10;
+}
+
+.Bottom { 
+    padding-top: 15px;
+    padding-bottom: -20px;
+    background-color:rgb(128, 148, 223);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-top: 900px;
+  }
+  
+  .locationIcon{
+    padding: 0 50px;
+  }
+  
+  .recordIcon {
+    padding: 0 120px;
+  }
+  
+  .personalIcon{
+    padding: 0 50px;
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  button {
+
+    width: 250px;
+    height: 50px;
+    margin-left: 45px;
+/* 상자 디자인 큰틀*/
+margin-bottom: 30px;
+border: 0px;
+background-color: #6b93dd;
+    
+/* 그림자 */
+border-radius: 10px;
+box-shadow:.8rem .5rem 1.4rem  #1a1b1b, -.3rem -.4rem .8rem #FBFBFB;
+/* box-shadow:-.2rem -.2rem 1.8rem white, .8rem .8rem 1.4rem  #AAB7CB; */
+
+/* 글씨 */
+color: #333333;
+font-size: 1.7em;
+font-weight: bold;
+
+animation-name: keybtn-language;
+animation-duration: .2s;
+
+}
+
+/*버튼 눌리는 효과*/
+button:active {
+
+    box-shadow: inset -.3rem -.1rem 1.4rem  #FBFBFB, inset .3rem .4rem .8rem #BEC5D0; 
+    cursor: pointer;
+
+}

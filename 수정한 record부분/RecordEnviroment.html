@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Record.css">
+    <title>Record Page</title>
+
+    <script>
+        function onload() {
+            var sTotal = localStorage.getItem("sTotal");
+            document.getElementById("NO3num").innerHTML=Number(sTotal);
+            
+        }
+    </script>
+</head>
+
+<body onload="onload()">
+    <div class="MainFrame">
+        <div class="title center">
+            <h1>Record Section</h1>
+        </div>
+
+        <div class="menu">
+            <nav class="clearfix">
+                <ul class="clearfix">
+                    <li><a href="Record.html">오늘</a></li>
+                    <li><a href="RecordChart.html">이번달</a></li>
+                    <li><a href="RecordEnviroment.html">환경보호</a></li>
+                </ul>
+                <a id="pull" href="#"></a>
+            </nav>
+        </div>
+
+        <br><br><br>
+        
+        <div>
+            <h4 class="Enviroment_title">절감한 배기가스(NO3)</h4>
+            
+
+            <span class="Enviroment_number" id="NO3num">0000</span>
+        </div>
+
+        <div class="NO3" >
+            <img src="NO3.png" alt="환경 보호 그림" width="99%" height="99%">
+        </div>
+
+        <div class="Home">
+            <nav class="clearfix">
+                <a id="pull" href="#"></a>
+            </nav>
+        </div>
+    </div>
+</body>
+
+</html>

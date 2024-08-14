@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Location.css">
+
+	<title>Kakao 지도 시작하기</title>	
+</head>
+
+<body>
+  <div class="MainBox">
+    <div class="TopFrame">
+      <p class="Topname"> 목적지 알림이</p>
+      <button class="NowBtn" type="button" onclick="handleNow()">현위치</button>
+      <div id="map" style="width: 640px;height:600px;"></div>
+      <script type="text/javascript"  src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7c09b3743adce6f6974c73b777877512&libraries=services"></script>
+      <div class="MiddleFrame">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div>
+            <div >
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <!-- 검색-->
+                  <form class="d-flex" onsubmit="searchPlaces(); return false;">
+                      <input class="form-control me-2" type="search" placeholder="주소를 입력하세요." value="명지대" aria-label="Search" id="keyword" size="15">
+                      
+                      <button class="btn btn-outline-success" type="submit">Search</button>
+                  </form>
+                  <!-- 카테고리 -->
+                  <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="firstCategory" onchange="changeFirstSelect(this)" style="width:100px; margin-left: 5px;"></select>
+                </li>
+                <li class="nav-item">
+                  <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="secondCategory" onchange="changeSecondSelect(this)" style="width:100px; margin-left: 5px;"></select>
+                </li>
+                <li class="nav-item ">
+                  <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="lastCategory" onchange="changelastSelect(this)" style="width:100px; margin-left: 5px;"></select>
+                </li>  
+
+                <button type='button' id="modal_btn">⭐</button>
+                <div class="black_bg"></div>
+
+
+                <div class="modal_wrap">
+                    <div class="modal_close">✗</div>
+                    <div>
+                      <div class="wrapper">
+                        <form id="todo-form" class="form">
+                        </form>
+                        <h2 class="tit" style="text-align: center; font-weight: 900;">즐겨찾기 목록</h2>
+                        <div>------------------------------------------------</div>
+                        <button type="submit" form="todo-form" style="border-radius: 15px; ; font-weight: 900; background-color: rgb(255, 255, 219); margin: 10px; cursor: pointer;">즐겨찾기🌟</button>
+                        <button class="allDelete off" style=" border-radius: 15px; float: right;  font-weight: 900; background-color: rgb(249, 221, 221); margin: 10px; cursor: pointer;">전체삭제⛔</button>
+                        <div class="todo-inner" style="overflow: overlay;height: 240px;">
+                            <div class="allDelete off">
+                            </div>
+                            <a  id="addCart" onclick="addCart();">
+                            <p class="cart-txt"></p>
+                            <ul id="todo-list" class="checkBtn"></ul>
+                        </div>
+                    </div>
+                    </div>
+                <div>
+              </ul>
+            </div>
+          </div>
+        </nav>   
+      </p>
+    </div>
+</div>
+<script>
+  var anText_sub1 = document.getElementById('todo-form').value;
+</script>
+<div class="map_wrap">
+          <div id="map"></div> 
+          <!-- list -->
+          <div id="menu_wrap" class="list" >
+            <div class="option"> 
+            </div>
+            <ul id="placesList"></ul>
+            <div id="pagination"></div>
+          </div> 	
+	    </div>
+       
+  <div class="SemiFrame">
+    <div class="alarmFrameLeft">
+        <h3 style="color:black; font-weight: 900";>알림 범위</h3>
+            <select id="fruit" name="fruit">
+              <option value="-1">-- 선택하세요 --</option>
+              <option value="100">100m</option>
+              <option value="200">200m</option>
+              <option value="300">300m</option>
+              <option value="400">400m</option>
+              <option value="500">500m</option>
+              <option value="5000">5000m(시연용)</option>
+            </select>
+    </div>
+  </div>
+
+  <div class="alarmFrameRight">
+    <h3 class="FavoritesText" style="color:black; font-weight: 900;"> 남은 거리/ 초 </h3>
+    <h3 class="distance" id="place1" style="font-weight: 900;">표시위치</h3>
+  </div>
+  <br>
+  <div class="SearchFrame">
+  <button class="Search" type="button" onclick="RunProgram()">검색</button>
+  </div>
+
+  <div class="Bottom">
+    <a href="Location.html"><image src="목적지아이콘.png" class="locationIcon" style="height:50px"></a>
+    <a href="Record.html"><image src="기록아이콘.png" class="recordIcon" style="height:50px"></a>
+    <a href="팀프 설정창(main).html"><image src="설정아이콘.png" class="personalIcon" style="height:50px"></a>
+    <div class="BottomName">
+        <p class="ba">알림설정</p>
+        <p class="bb">기록</p>
+        <p class="bc">사용자설정</p>
+    </div>    
+</div>
+
+<script>
+  const a = localStorage.getItem("color");
+  const main = document.getElementsByClassName("MainBox");
+  main[0].style.backgroundColor = `${a}`;
+</script>
+
+<script>
+    const b = localStorage.getItem("btcolor");
+    const bottom = document.getElementsByClassName("Bottom");
+    const topname = document.getElementsByClassName("Topname");
+    const search = document.getElementsByClassName("Search");
+    bottom[0].style.backgroundColor = `${b}`;
+    topname[0].style.backgroundColor = `${b}`;
+    search[0].style.backgroundColor = `${b}`;
+</script>
+
+</body>
+</html>
+
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src =" script.js"></script>
+        <script src ="Location.js"></script>
+        <script src ="AddressSearch.js"></script>
+
+
+<script>
+let elem = document.getElementById('keyword');
+elem.addEventListener("click", function(click){
+
+});
+</script>

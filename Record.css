@@ -1,0 +1,169 @@
+.MainFrame {
+    width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(209, 219, 231);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.center {
+    margin-top:-16px;
+    text-align: center;
+}
+
+/* menu part design */
+nav {
+    font-size: 12pt;
+    font-family: 'PT Sans', Arial, Sans-serif;
+    
+}
+
+nav ul {
+    padding: 0;
+    margin: 0 auto;
+    
+}
+
+nav a {
+    line-height: 50px;
+    height: 50px;
+}
+
+nav li a {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+nav li:last-child a {
+    border-right: 0;
+}
+
+nav a#pull {
+    display: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    background-color: #3f79f6;
+    text-align: center;
+}
+
+li {
+    display: inline-block;
+}
+
+li a {
+    color: #FFFFFF;
+    text-align: center;
+    padding: 14.5px 16px;
+    text-decoration: none;
+}
+
+.menu {
+    left: 0%;
+    right: 0%;
+    height: 40px;
+    text-align: center;
+    max-width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-color: #80abdb;
+    color: white;
+}
+
+.Reco {
+    margin-left: 10px;
+    font-weight: 900;
+    font-size: 30px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.TM {
+    margin-top: 10px;
+}
+
+.PE {
+    top:20;
+    left: 0%;
+    bottom:0 ;
+    display:block;
+    opacity: 0.4;
+}
+
+/* 환경 보호 페이지 css */
+.Enviroment_title {
+    text-align: center;
+    display: block;
+    font-size: 30px;
+    color: #222;
+    margin-bottom: 10px
+}
+.Enviroment_number {
+    text-align: center;
+    display: block;
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    margin: 0 auto;
+    font-size: 40px;
+    color: #3f79f6;
+    border: 3px solid #3f79f6;
+    border-radius: 50%;
+}
+.NO3 {
+    margin-top: 10%;
+    margin-bottom: 10%;
+    bottom: 7%;
+    text-align: center;
+}
+
+.Home {
+    left: 0%;
+    right: 0%;
+    position: fixed;
+    bottom: 0px;
+    text-align: center;
+}
+
+.Bottom { 
+    padding-top: 15px;
+    padding-bottom: -20px;
+    background-color:rgb(128, 148, 223);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-top: 15px;
+}
+
+.locationIcon{
+    padding: 0 50px;
+}
+
+.recordIcon {
+    padding: 0 120px;
+}
+
+.personalIcon{
+    padding: 0 48px;
+}
+
+.BottomName {
+    display: inline-flex;   
+}
+
+.ba {
+    margin-top: -10px;
+    padding: 0 45px;
+}
+
+.bb {
+    margin-top: -10px;
+    padding: 0 125px;
+}
+
+.bc {
+    margin-top: -10px;
+    padding: 0 50px;
+}

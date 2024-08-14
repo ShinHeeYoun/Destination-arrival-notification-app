@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Record.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Record Page</title>
+</head>
+
+<body>
+    <div class="MainFrame">
+        <div class="title center">
+            <h1>Record Section</h1>
+        </div>
+
+        <div class="menu">
+            <nav class="clearfix">
+                <ul class="clearfix">
+                    <li><a href="Record.html">오늘</a></li>
+                    <li><a href="RecordChart.html">이번달</a></li>
+                    <li><a href="RecordEnviroment.html">환경보호</a></li>
+                </ul>
+                <a id="pull" href="#"></a>
+            </nav>
+        </div>
+
+
+        <br><br><br>
+        <!--이번 달 기록 부분-->
+        <div class="MonthRecord Reco">
+            <p id="YW"> ~년 ~월 통계 </p>
+            <p id="Distance"> 이동거리 : ~~~km </p>
+            <p id="Time"> 탑승 시간 : ~~~시간 ~~~분 </p>
+            <p id="Money"> 절약 비용 : ~~~~원 </p>
+            <p id="Notification"> 알림 횟수 : ~~~번 </p>
+        </div>
+        <script src="Location.js"></script>
+        <script>
+            let now = new Date();
+            let year = now.getFullYear();
+            let month = now.getMonth() + 1;
+            let datt = now.getDate();
+            document.getElementById("YW").innerHTML = year + "년 " + month + "월 " + datt + "일 통계";
+            //탑승 시간 부분
+            var tHour, tMin, tSecond;
+            tSecond = totalTime;
+            if (totalTime > 60) {
+                tMin = tSecond / 60;
+                tSecond = tSecond % 60;
+            } else { tMin = 0; }
+            if (tMin > 60) {
+                tHour = tMin / 60;
+                tMin = tMin % 60;
+            } else { tHour = 0; }
+            document.getElementById("Time").innerHTML = "탑승 시간 : " + tHour + "시간 " + tMin + "분 " + tSecond + "초";
+            //이동거리
+            var DDist = totalTime * 0.012
+            var TotalDistance = localStorage.getItem("distance");
+            document.getElementById("Distance").innerHTML = "이동거리 : " + TotalDistance + "m";
+            //절약 비용 부분
+            var money;
+            if (totalTime * 2.3 <= 2800) {
+                money = 0;
+            }
+            else { money = totalTime * 2.3 - 2800; }
+            document.getElementById("Money").innerHTML = "절약 비용 : " + money + "원";
+            //알림 횟수 부분
+            var TotalRing = localStorage.getItem("ring");
+            document.getElementById("Notification").innerHTML = "알림 횟수 : " + TotalRing;
+
+            $(function () {
+                $('#endDay').click(function () {
+                    console.log("하루가 끝납니다!");
+
+                    var distToKm = (TotalDistance/1000);
+
+                    localStorage.setItem(datt, JSON.stringify({
+                        name: parseInt(month), class: datt, alert: parseInt(TotalRing),
+                        time: parseInt(tHour + tMin / 60), dist: parseInt(distToKm), no2: parseInt(TotalDistance/1000 * 96.3)
+                    }));
+                    //초기화
+                    localStorage.removeItem("distance");
+                    localStorage.removeItem("ring");
+                    now=0; month=0; datt=0; tHour=0; tMin=0; tSecond=0; TotalDistance=0; TotalRing=0; totalTime=0;
+                    location.reload();
+                });
+            });
+        </script>
+
+        <div>
+            <button type="button" id="endDay">하루 끝내기(시연용)</button>
+        </div>
+
+        <div class="PE">
+            <img src="PE.png" alt="환경 보호 그림" width="90%" height="90%">
+        </div>
+        <div class="Bottom">
+            <a href="Location.html">
+                <image src="목적지아이콘.png" class="locationIcon" style="width:50px; height:50px">
+            </a>
+            <a href="Record.html">
+                <image src="기록아이콘.png" class="recordIcon" style="width:50px; height:50px">
+            </a>
+            <a href="팀프 설정창(main).html">
+                <image src="설정아이콘.png" class="personalIcon" style="width:50px; height:50px">
+            </a>
+            <div class="BottomName">
+                <p class="ba">알림설정</p>
+                <p class="bb">기록</p>
+                <p class="bc">사용자설정</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

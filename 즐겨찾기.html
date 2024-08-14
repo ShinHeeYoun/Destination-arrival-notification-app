@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    
+    .MainFrame {
+    width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(209, 219, 231);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+    .box{
+      display: block;
+      unicode-bidi: isolate;
+      margin-block-start: 0.5em;
+      margin-block-end: 0.5em;
+      margin-inline-start: auto;
+      margin-inline-end: auto;
+      overflow: hidden;
+      border-style: inset;
+      border-width: 2px;
+      padding: 1px;
+      background-color: rgb(234, 231, 231);
+     }
+     
+    header{
+      text-align: center;
+    }
+    
+    a{
+      text-decoration: none;
+      color: black;
+    }
+
+    ul{
+        padding: 0;
+      }
+
+    .Bottom { 
+        padding-top: 15px;
+        padding-bottom: -20px;
+        background-color:rgb(128, 148, 223);
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        margin-top: 770px;
+      }
+
+    .locationIcon{
+        padding: 0 50px;
+        }
+
+    .recordIcon {
+        padding: 0 120px;
+        }
+
+    .personalIcon{
+        padding: 0 48px;
+        }
+
+    .BottomName {
+        display: inline-flex;   
+        }
+
+    .ba {
+        margin-top: -10px;
+        padding: 0 50px;
+        }
+
+    .bb {
+        margin-top: -10px;
+        padding: 0 115px;
+        }
+
+    .bc {
+        margin-top: -10px;
+        padding: 0 60px;
+        }
+
+  </style>
+</head>
+<body>
+  <div class="MainFrame">
+        <div id="clickLatlng"></div>
+        <script src="Location.js"></script>
+  <div>
+    <header>
+      <h1>즐겨찾기</h1>
+    </header>
+    <nav>
+      <div>
+        <ul>
+          <li class = "box">
+            <div class="MiddleFrame">
+              <div class="End">
+                  <div class="wrapper">
+                      <form id="todo-form" class="form">
+                          <input required type="text" placeholder="SEARCH">
+                      </form>
+                      <button type="submit"  form="todo-form" onclick="handleButton()">추가</button>
+                      <div class="todo-inner">
+                          <div class="allDelete off">
+                              <h2 class="tit"></h2>
+                              <span class="btns"> 모두 지우기 ❌</span>
+                          </div>
+                          <p class="txt"></p>
+                          <ul id="todo-list"></ul>
+                      </div>
+                  </div> 
+          </li>
+        </ul>
+      </div>
+      <div class="Bottom">
+        <a href="Location.html"><image src="목적지아이콘.png" class="locationIcon" style="width:50px; height:50px"></a>
+        <a href="Record.html"><image src="기록아이콘.png" class="recordIcon" style="width:50px; height:50px"></a>
+        <a href="팀프 설정창(main).html"><image src="설정아이콘.png" class="personalIcon" style="width:50px; height:50px"></a>
+            <div class="BottomName">
+                <p class="ba">알림설정</p>
+                <p class="bb">기록</p>
+                <p class="bc">사용자설정</p>
+            </div> 
+    </div>
+    </div>
+      <script>
+        const toDoForm = document.querySelector('#todo-form');
+        const toDoInput = toDoForm.querySelector('input');
+        const toDoList = document.querySelector('#todo-list');
+        const allDelete = document.querySelector('.allDelete');
+        const txt = document.querySelector('.txt');
+        const TODOS_KEY = "todos2";
+
+        let toDos = new Array();
+
+        function saveToDos() { //item을 localStorage에 저장합니다.
+            typeof(Storage) !== 'undefined' && localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
+        };
+
+        function allDeleteToDo() { //전체 item을 삭제
+            localStorage.clear(toDos);
+            toDoList.innerText = '최근검색어 내역이 없습니다.';
+        };
+
+        function deleteToDo(e) { //각각의 item을 삭제
+            const li = e.target.parentElement;
+            li.remove();
+            toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
+            toDos.length === 0 && (txt.innerText = '최근검색어 내역이 없습니다.')
+            saveToDos();
+        };
+
+        function paintToDo(newTodo) { //화면에 뿌림
+            const {id, text} = newTodo;
+            const item = document.createElement("li");
+            const span = document.createElement("span");
+            const button = document.createElement("buttons");
+            item.id = id;
+            span.innerText = text;
+            button.innerText = '❌';
+            button.addEventListener("click", deleteToDo);
+            allDelete.addEventListener("click", allDeleteToDo);
+            item.appendChild(span);
+            item.appendChild(button);
+            toDoList.appendChild(item);
+            newTodo !== null && allDelete.classList.remove('off');
+        };
+
+        function handleToDoSubmit(event) { //form 전송
+            event.preventDefault();
+            const newTodoItem = toDoInput.value;
+            toDoInput.value = '';
+            const newTodoObj = {
+                id: Date.now(),
+                text: newTodoItem
+            };
+            toDos.push(newTodoObj);
+            paintToDo(newTodoObj);
+            saveToDos();
+        };
+
+        toDoForm.addEventListener('submit', handleToDoSubmit);
+
+        const savedToDos = JSON.parse(localStorage.getItem(TODOS_KEY));
+        if(savedToDos !== null) {
+            toDos = savedToDos //전에 있던 items들을 계속 가지도 있다록 합니다. 
+            savedToDos.forEach(paintToDo);
+        }      
+            function handleButton(){
+                const input = document.querySelector(".End input");
+                const inputvalue = input.value;
+                console.log(inputvalue);
+                return searchAddress(inputvalue);
+            }
+            
+            function bookmark(){
+
+            }
+            function handleNow(){
+                alert("도착");
+                return searchNow();
+            }
+        function printName()  {  const name = document.getElementById('name').value;  document.getElementById("result").innerText = name;}
+      </script>
+</body>
+</html>

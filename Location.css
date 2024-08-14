@@ -1,0 +1,514 @@
+
+.MainBox {
+    border: 1px solid rgb(214, 200, 200);
+    width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: rgb(209, 219, 231);
+}
+
+.TopFrame{
+    position: relative;
+    z-index: 2;
+}
+
+.Topname {
+    text-align: center;
+    margin: 50px;
+    padding: 5px 190px;
+    border-radius: 15px;
+    background: rgb(128, 148, 223);
+    box-shadow: 5px 6px 5px 0px;
+    color: black;
+    position: absolute;
+    z-index: 2;
+    font-size: 25px;
+    font-weight: 900;
+}
+
+.MiddleFrame { 
+    padding:20px;
+    position: fixed;
+    width: 640px;
+}
+
+
+.SemiFrame {
+    padding: 0 20px ;
+   
+}
+
+.alarm {
+    border: 1px solid black;
+    width: 250px;
+    height: 0px;
+    border-radius: 10px;
+    box-shadow: 2px 3px 5px 0px;
+    padding: 0 20px;
+}
+
+.alarmFrameLeft {
+    float: left;
+    padding: 0 25px;
+    margin-top: 140px;
+}
+
+.alarmFrameRight {
+    float: right;
+    padding: 0 75px;
+    color:white;
+    margin-top: 140px;
+}
+
+.Search {
+    padding: 10px;
+    text-align: center;
+    background-color: rgb(128, 148, 223);
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+
+.SearchFrame {
+    padding: 0 40px;
+    margin-top: 110px;
+
+}
+
+.Bottom { 
+    padding-top: 15px;
+    padding-bottom: -20px;
+    background-color:rgb(128, 148, 223);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.locationIcon{
+    padding: 0 50px;
+}
+
+.recordIcon {
+    padding: 0 120px;
+}
+
+.personalIcon{
+    padding: 0 48px;
+}
+
+input {
+    width: 500px;
+    height: 30px;
+}
+
+.range {
+    width: 50px;
+    height: 20px;
+    padding: 5px;
+    
+}
+
+.End{
+    padding:0 20px;
+}
+
+input {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    font-family: "Noto Sansf KR", sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    width:350px;
+    color: #444;
+    background-color: #fff;
+    padding: .6em 1.4em .5em .8em;
+    border: 1px solid #aaa;
+    border-radius: .5em;
+    box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+    z-index: 100;
+  }
+
+
+
+select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  
+  font-family: "Noto Sansf KR", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  
+  color: #444;
+  background-color: #fff;
+  
+  padding: .6em 1.4em .5em .8em;
+  margin: 0;
+  
+  border: 1px solid #aaa;
+  border-radius: .5em;
+  box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+}
+
+select:hover {
+  border-color: #888;
+}
+
+select:focus {
+  border-color: #aaa;
+  box-shadow: 0 0 1px 3px rgba(34, 24, 128, 0.7);
+  box-shadow: 0 0 0 3px -moz-mac-focusring;
+  color: #222;
+  outline: none;
+}
+
+select:disabled {
+  opacity: 0.5;
+}
+
+label {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.3;
+  
+  color: #444;
+  
+  margin-right: 0.5em;
+}
+
+.NowBtn {
+    position: absolute;
+    z-index: 60000;
+    bottom: 30px;
+    right: 30px;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(246, 239, 162);
+}
+
+.AddressBtn {
+    position: absolute;
+    width: 20px;
+    top: 15px;
+    right: 1px;
+    margin: 0;
+}
+
+.addressFrame {
+    position: relative;
+    width: 500px;
+  }
+  
+  input {
+    width: 100%;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+  
+  .off {display: none;}
+ul, li {list-style: none; margin: 0; padding: 0;}
+.form {display: inline-block;}
+.form input::placeholder {color: #bbbbbb;}
+
+
+
+.todo-inner{
+    background:rgb(243, 246, 251);
+    font-weight: bold;
+    overflow: overlay;
+    font-size: 25px;
+    padding: 0px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+
+  
+.distance { 
+    width:260px;
+    height:0px;
+    font-size:20px;
+    color: black;
+}
+
+
+.Bottom { 
+    padding-top: 15px;
+    padding-bottom: -20px;
+    background-color:rgb(128, 148, 223);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-top: 0px;
+  }
+
+.locationIcon{
+    padding: 0 50px;
+  }
+  
+  .recordIcon {
+    padding: 0 120px;
+  }
+  
+  .personalIcon{
+    padding: 0 48px;
+  }
+  
+  .BottomName {
+    display: inline-flex;   
+  }
+  
+  .ba {
+    margin-top: -10px;
+    padding: 0 45px;
+    font-weight: 900;
+  }
+  
+  .bb {
+    margin-top: -10px;
+    padding: 0 125px;
+    font-weight: 900;
+  }
+  
+  .bc {
+    margin-top: -10px;
+    padding: 0 50px;
+    font-weight: 900;
+  }
+  
+image {
+    width: 10;
+    height: 10;
+}
+
+#map{
+    width:100%;
+    height:100%;	
+    position:relative;	
+    
+}
+
+.map_wrap {
+    position:relative;
+    width: 640px;
+    height:200px;
+    margin-top: 10px;
+}
+.custom_typecontrol {
+    position:absolute; 
+    top:10px;
+    right:5px;
+    overflow:auto;
+    width: auto;
+    height:auto;
+    margin:0;
+    padding:0;
+    z-index:1;
+    font-size:10px;
+    font-family:'Malgun Gothic', '맑은 고딕', sans-serif;
+}
+
+.radius_border{
+    border:1px hidden;
+    border-radius:5px;
+    
+} 
+
+.custom_zoomcontrol {
+    position:absolute;
+    top:60px;
+    right:5px;
+    width:auto;
+    height:auto;
+    overflow:auto;
+    z-index:1;
+    } 
+
+.list, .list * {
+    margin:0;
+    padding:0;
+    font-family:'Malgun Gothic',dotum,'돋움',sans-serif;
+    font-size:12px;
+    }
+
+#menu_wrap {
+    position:absolute;
+    top:55px;
+    left:10px;
+    bottom:0;
+    width:600px;
+    height:250px;
+    margin:10px 10px 10px 10px;
+    padding:3px;
+    overflow-y:auto;
+    background:rgba(255, 255, 255, 0.7);
+    z-index: 1;
+    font-size:12px;
+}
+
+#menu_wrap hr {
+    display: block; 
+    height: 1px;
+    border: 0; 
+    border-top: 2px solid #5F5F5F;
+    margin:3px 0;
+    }
+#menu_wrap .option{
+    text-align: center;
+}
+
+#placesList .item {
+    position:relative;
+    border-bottom:1px solid #888;
+    overflow: hidden;cursor: pointer;
+    min-height: 65px;
+}
+#placesList .item span {/*지번, 주소*/ 
+    display: block;
+    margin-top:4px;
+} 
+#placesList .item h5, #placesList .item .info {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+#placesList .item .info{
+    padding:10px 0 10px 55px;
+}
+#placesList .info .gray {
+    color:#8a8a8a;
+}
+#placesList .info .jibun {
+    padding-left:26px;
+    background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;
+}
+#placesList .info .tel {
+    color:#009900;
+}
+#placesList .item .markerbg {
+    float:left;
+    position:absolute;
+    width:36px; 
+    height:37px;
+    margin:10px 0 0 10px;
+    background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;
+}
+#placesList .item .marker_1 {
+    background-position: 0 -10px;
+}
+#placesList .item .marker_2 {
+    background-position: 0 -56px;
+}
+#placesList .item .marker_3 {
+    background-position: 0 -102px
+}
+#placesList .item .marker_4 {
+    background-position: 0 -148px;
+}
+#placesList .item .marker_5 {
+    background-position: 0 -194px;
+}
+#placesList .item .marker_6 {
+    background-position: 0 -240px;
+}
+#placesList .item .marker_7 {
+    background-position: 0 -286px;
+}
+#placesList .item .marker_8 {
+    background-position: 0 -332px;
+}
+#placesList .item .marker_9 {
+    background-position: 0 -378px;
+}
+#placesList .item .marker_10 {
+    background-position: 0 -423px;
+}
+#placesList .item .marker_11 {
+    background-position: 0 -470px;
+}
+#placesList .item .marker_12 {
+    background-position: 0 -516px;
+}
+#placesList .item .marker_13 {
+    background-position: 0 -562px;
+}
+#placesList .item .marker_14 {
+    background-position: 0 -608px;
+}
+#placesList .item .marker_15 {
+    background-position: 0 -654px;
+}
+#pagination {
+    margin:10px auto;
+    text-align: center;
+}
+#pagination a {
+    display:inline-block;
+    margin-right:10px;
+}
+#pagination .on {
+    font-weight: bold; 
+    cursor: default;
+    color:#777;
+}
+
+.badge {
+    line-height: 2;
+}
+
+.divider-vertical {
+    /* height: 60px; */
+    margin: 0 0 0 30px;
+    padding: 0 0 0 30px;
+    border-left: 3px solid lightgray;
+
+}
+
+
+
+
+.modal_wrap{
+    display: none;
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    top:550%;
+    left: 50%;
+    margin: -250px 0 0 -250px;
+    background:rgb(243, 246, 251);
+    box-shadow: 10px 2px 30px 0px;
+   font-size: 25px;
+   font-weight: 900;
+   border:solid;
+   border-radius: 15px;
+   text-align: left;
+}
+.black_bg{
+    display: none;
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color:rgba(0, 0,0, 0.5);
+    top:0;
+    left: 0;
+  
+}
+.modal_close{
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    right: 0;
+}
+.modal_close> a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background:url(https://img.icons8.com/metro/26/000000/close-window.png);
+    text-indent: -9999px;
+}
+

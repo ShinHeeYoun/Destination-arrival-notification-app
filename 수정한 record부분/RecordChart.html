@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Record.css">
+    <title>Record Chart Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        var result_JSON;
+
+
+        let now = new Date();
+        let month = now.getMonth() + 1;
+        //페이지가 오픈되면 init() 함수를 실행한다
+        var orderBy = "asc";
+
+        function onload() {
+            localStorage.removeItem("sTotal");
+            var step;
+            for (step = 0; step < 32; step++) {
+                if (JSON.parse(localStorage.getItem(step)) != null) {
+                    arrMain.push(JSON.parse(localStorage.getItem(step)));
+
+                    result_JSON = Object.values(JSON.parse(localStorage.getItem(step)));
+                    console.log(result_JSON + " : 키값 = " + step);
+                }
+            }
+            init(arrMain);
+        }
+
+        // 배열 원본 
+        var arrMain = [
+            // { name: month, class: 1, alert: 2, time: 2.5, dist: 100, no2: 9690 },
+            // { name: month, class: 2, alert: 2, time: 2.0, dist: 80, no2: 7752 },
+            // { name: month, class: 3, alert: 1, time: 1.8, dist: 78, no2: 7758.2 },
+            // { name: month, class: 4, alert: 6, time: 5.0, dist: 92, no2: 8914.8 },
+            // { name: month, class: 7, alert: 2, time: 2.1, dist: 92, no2: 8917.8 },
+            // { name: month, class: 8, alert: 2, time: 2.2, dist: 95, no2: 9205.5 },
+            // { name: month, class: 9, alert: 1, time: 2.7, dist: 86, no2: 8333.4 },
+            // { name: month, class: 10, alert: 2, time: 1.0, dist: 48, no2: 4651.2 }
+        ];
+
+        function init(arr) {
+            // 메인에 있는 배열을 복사한다.
+            var Array = arr;
+            tagParsing(Array, true);
+
+            // 클릭 이벤트 
+            $(".title").click(function () {
+                var titleName = this.id;
+                if (titleName == "name") {
+                    objSort(Array, "name");
+                    tagParsing(Array, false);
+                } else if (titleName == "class") {
+                    objSort(Array, "class");
+                    tagParsing(Array, false);
+                } else if (titleName == "alert") {
+                    objSort(Array, "alert");
+                    tagParsing(Array, false);
+                } else if (titleName == "time") {
+                    objSort(Array, "time");
+                    tagParsing(Array, false);
+                } else if (titleName == "dist") {
+                    objSort(Array, "dist");
+                    tagParsing(Array, false);
+                } else if (titleName == "no2") {
+                    objSort(Array, "no2");
+                    tagParsing(Array, false);
+                }
+            })
+        }
+        // 정렬 함수
+        function objSort(obj, sort) {
+            //오름차순 정렬 
+            // asc : 오름차순(jquery), desc : 내림차순(jquery)
+            if (orderBy == "asc") {
+                orderBy = "desc";
+                obj.sort(function (a, b) {
+                    if (a[sort] > b[sort]) return 1;
+                    else if (a[sort] < b[sort]) return -1;
+                });
+            } else { //내림차순 정렬
+                orderBy = "asc";
+                obj.sort(function (a, b) {
+                    if (a[sort] > b[sort]) return -1;
+                    else if (a[sort] < b[sort]) return 1;
+                });
+            }
+        }
+        // 테이블 출력 함수
+        function tagParsing(obj, init) {
+            var kTotal = 0;
+            var mTotal = 0;
+            var eTotal = 0;
+            var sTotal = 0;
+            var len = obj.length;
+            var tag = '';
+            for (i = 0; i < obj.length; i++) {
+                tag += "<tr><td class='name'>" + obj[i].name + "</td>"
+                    + "<td class='class'>" + obj[i].class + "</td>"
+                    + "<td class='jum'>" + obj[i].alert + "</td>"
+                    + "<td class='jum'>" + obj[i].time + "</td>"
+                    + "<td class='jum'>" + obj[i].dist + "</td>"
+                    + "<td class='jum'>" + obj[i].no2 + "</td></tr>";
+
+                kTotal += obj[i].alert;
+                mTotal += obj[i].time;
+                eTotal += obj[i].dist;
+                sTotal += obj[i].no2;
+
+                // localStorage part
+                localStorage.setItem("sTotal", sTotal);
+            }
+            document.getElementById("data").innerHTML = tag;
+            if (init) {
+                tag = '';
+                //총합
+                tag += "<tr class='total'><td class='name'>" + "합산" + "</td>"
+                    + "<td class='class'>" + "-" + "</td>"
+                    + "<td class='jum'>" + kTotal + "</td>"
+                    + "<td class='jum'>" + mTotal + "</td>"
+                    + "<td class='jum'>" + eTotal + "</td>"
+                    + "<td class='jum'>" + sTotal + "</td></tr>";
+                //평균
+                tag += "<tr class='avg'><td class='name'>" + "평균" + "</td>"
+                    + "<td class='class'>" + "-" + "</td>"
+                    + "<td class='jum'>" + (kTotal / len).toFixed(2) + "</td>"
+                    + "<td class='jum'>" + (mTotal / len).toFixed(2) + "</td>"
+                    + "<td class='jum'>" + (eTotal / len).toFixed(2) + "</td>"
+                    + "<td class='jum'>" + (sTotal / len).toFixed(2) + "</td></tr>";
+                document.getElementById("result").innerHTML = tag;
+            }
+        }
+
+        // 요소 추가 함수
+        $(function () {
+            $('#Add').click(function () {
+                //텍스트박스 값 가져오기
+                var aDate = $("#addDate").val();
+                var aAlert = $("#addAlert").val();
+                var aTime = $("#addTime").val();
+                var aDist = $("#addDist").val();
+                // 이번달 구하기
+                var date = new Date();
+                var thisMonth = date.getMonth() + 1;
+                //NO3 구하기
+                var aNO3 = 96.9 * parseInt(aDist);
+                // alert(thisMonth + "월 " + aDate + "일 - 알림횟수: " + aAlert + "회, 이동거리: "
+                //     + aDist + "km, 이동시간: " + aTime + "시간, NO3: " + aNO3 + "g : 정보를 추가합니다");
+                let addOne = {
+                    name: parseInt(thisMonth), class: aDate, alert: parseInt(aAlert),
+                    time: parseInt(aTime), dist: parseInt(aDist), no2: parseInt(aNO3)
+                }
+                //arrMain.push(addOne);
+
+                // let result_addOne = Object.values(addOne);
+                // console.log("추가되는 값: "+result_addOne);
+
+                localStorage.setItem(aDate, JSON.stringify({
+                    name: parseInt(thisMonth), class: aDate, alert: parseInt(aAlert),
+                    time: parseInt(aTime), dist: parseInt(aDist), no2: parseInt(aNO3)
+                }));
+
+                let result_JSON = Object.values(JSON.parse(localStorage.getItem(aDate)));
+                // console.log(result_JSON + " : 키값 = " + aDate);
+
+                //onload();
+                location.reload();
+            });
+        });
+
+        //
+        $(function () {
+            $('#delete').click(function () {
+                //텍스트박스 값 가져오기
+                var dDate = $("#deleteDate").val();
+                localStorage.removeItem(dDate);
+
+                location.reload();
+            });
+        });
+
+        $(function () {
+            $('#clearAll').click(function () {
+                var step;
+                for (step = 0; step < 32; step++) {
+                    if (JSON.parse(localStorage.getItem(step)) != null) {
+                        localStorage.removeItem(step);
+                    }
+                }
+                //텍스트박스 값 가져오기
+                location.reload();
+            });
+        });
+    </script>
+</head>
+
+<body onload="onload()">
+    <div class="MainFrame">
+        <div class="title center">
+            <h1>Record Section</h1>
+        </div>
+        <div class="menu">
+            <nav class="clearfix">
+                <ul class="clearfix">
+                    <li><a href="Record.html">오늘</a></li>
+                    <li><a href="RecordChart.html">이번달</a></li>
+                    <li><a href="RecordEnviroment.html">환경보호</a></li>
+                </ul>
+                <a id="pull" href="#"></a>
+            </nav>
+        </div>
+        <div style="overflow-x: hidden; width: fit-content; height: 800px; margin:0.5cm;">
+            <style media="screen">
+                body {
+                    height: 100vh;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .report tr {
+                    background: #cedbf9;
+                }
+
+                .report td {
+                    border: none;
+                    height: 50px;
+                    font-size: 16pt;
+                    text-align: center;
+                }
+
+                .report td.name {
+                    width: 80px;
+                }
+
+                .report td.class {
+                    width: 80px;
+                }
+
+                .report td.jum {
+                    width: 130px;
+                }
+
+                .titleTable td {
+                    cursor: pointer;
+                }
+
+                .titleTable tr td {
+                    font-size: 18pt;
+                    font-weight: bold;
+                    background: #2e34e3;
+                    color: #fff;
+                }
+
+                .total td,
+                .avg td {
+                    color: #fff;
+                    background: #3f79f6;
+                }
+            </style>
+            <table id="grade" class="titleTable report">
+                <tr>
+                    <td id="name" class="name title">월</td>
+                    <td id="class" class="class title">날짜</td>
+                    <td id="alert" class="jum title">알림횟수</td>
+                    <td id="time" class="jum title">이동시간(hour)</td>
+                    <td id="dist" class="jum title">이동거리(km)</td>
+                    <td id="no2" class="jum title">NO3(g)</td>
+                </tr>
+            </table>
+            <table id="data" class="report data"></table>
+            <table id="result" class="report result"></table>
+            <br>
+            <form>
+                날짜 <input type="text" id="addDate" size="3">
+                알림횟수 <input type="text" id="addAlert" size="3">
+                이동시간 <input type="text" id="addTime" size="3">
+                이동거리 <input type="text" id="addDist" size="3">
+                <button type="button" id="Add">추가하기</button>
+            </form>
+            <form>
+                삭제할 날짜 <input type="text" id="deleteDate" size="5">
+                <button type="button" id="delete">제거하기</button>
+            </form>
+            <form>
+                표 초기화
+                <button type="button" id="clearAll">초기화</button>
+            </form>
+        </div>
+        <div class="Bottom">
+            <a href="Location.html">
+                <image src="목적지아이콘.png" class="locationIcon" style="width:50px; height:50px">
+            </a>
+            <a href="Record.html">
+                <image src="기록아이콘.png" class="recordIcon" style="width:50px; height:50px">
+            </a>
+            <a href="팀프 설정창(main).html">
+                <image src="설정아이콘.png" class="personalIcon" style="width:50px; height:50px">
+            </a>
+            <div class="BottomName">
+                <p class="ba">알림설정</p>
+                <p class="bb">기록</p>
+                <p class="bc">사용자설정</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
