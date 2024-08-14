@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ### Introduction
 <div align=center>
 <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=HTML5&logoColor=white" /></a> 
@@ -29,3 +30,7 @@ Kakao map api를 이용하여 `카테고리 별`(대분류, 중분류, 소분류
 
 
 
+=======
+# Destination-arrival-notification-app
+This is repository for [팀프로젝트1] (MJU 2021 subject)
+>>>>>>> 2e946e3e15ef72b9c0aaccd3b907ca4ffdc5c563
